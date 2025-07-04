@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Join Our English Speaking Circle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #5e35b1;
+      --secondary: #3949ab;
+      --accent: #7c4dff;
+      --light: #f5f3ff;
+      --dark: #1a237e;
+      --text: #2d3748;
+      --muted: #718096;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    .form-container {
+      width: 100%;
+      max-width: 500px;
+    }
+    
+    .form-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .form-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .form-header::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+    
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+    
+    .form-group {
+      margin-bottom: 1.8rem;
+      position: relative;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      color: var(--dark);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .form-label i {
+      margin-right: 10px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background-color: white;
+      color: var(--text);
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.1);
+    }
+    
+    textarea.form-input {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    select.form-input {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      background-size: 1em;
+    }
+    
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+    
+    .submit-btn:hover {
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(94, 53, 177, 0.3);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+    
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+    
+    .feature {
+      background: rgba(124, 77, 255, 0.1);
+      color: var(--primary);
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    @media (max-width: 576px) {
+      .form-card {
+        padding: 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.6rem;
+      }
+      
+      .form-intro {
+        font-size: 1rem;
+      }
+    }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-card {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+    
+    /* Floating label alternative */
+    .floating-label-group {
+      position: relative;
+      margin-top: 1.5rem;
+    }
+    
+    .floating-label {
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      color: var(--muted);
+      transition: all 0.2s ease;
+      pointer-events: none;
+      background: white;
+      padding: 0 5px;
+    }
+    
+    .form-input:focus + .floating-label,
+    .form-input:not(:placeholder-shown) + .floating-label {
+      top: -10px;
+      left: 12px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      background: white;
+    }
+    
+    /* Chat bubble style for some fields */
+    .chat-bubble {
+      background: #f8f9fa;
+      border-radius: 18px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    .chat-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 30px;
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #f8f9fa transparent;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <div class="form-card">
+      <div class="form-header">
+        <h1>Let's Improve Your English Together Join English Speaking Group</h1>
+    <p class="form-intro">Hi! I'm creating an English-speaking group on Google Meet, starting from 10 July.  
+    There’s no teacher—it’s a peer-learning space with regular speaking activities like  
+    topic discussion, Q&A, role play, storytelling, etc.  
+    If you’re interested in speaking and improving your English, fill out this form.  
+    Let’s help each other grow!</p>
+
+      </div>
+      
+      <div class="features">
+        <div class="feature"><i class="fas fa-users"></i> Peer Learning</div>
+        <div class="feature"><i class="fas fa-comments"></i> Interactive</div>
+        <div class="feature"><i class="fas fa-video"></i> Online Sessions</div>
+      </div>
+      
+      <form action="https://formsubmit.co/amoljadhav8832@gmail.com" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="name"><i class="fas fa-user"></i> What's your name?</label>
+          <input type="text" class="form-input" name="Name" id="name" placeholder="Enter your full name" required />
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="contact"><i class="fas fa-envelope"></i> How can we reach you?</label>
+          <input type="text" class="form-input" name="WhatsApp_or_Email" id="contact" placeholder="WhatsApp number or email" required />
+        </div>
+        
+        <div class="chat-bubble">
+          <p style="margin-bottom: 1rem; color: var(--dark);">To help match you with the right group, tell us about your English level:</p>
+          <div class="form-group">
+            <select class="form-input" name="English_Level" id="level" required>
+              <option value="" disabled selected>Select your level</option>
+              <option value="Beginner">Beginner - Learning basics</option>
+              <option value="Intermediate">Intermediate - Comfortable with conversations</option>
+              <option value="Advanced">Advanced - Fluent but want to refine</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="why"><i class="fas fa-question-circle"></i> Why do you want to join us?</label>
+          <textarea class="form-input" name="Why" id="why" placeholder="Share your motivation..." required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="comfort"><i class="fas fa-microphone"></i> Comfortable speaking in a group?</label>
+          <select class="form-input" name="Comfort_Speaking" id="comfort" required>
+            <option value="" disabled selected>Select your comfort level</option>
+            <option value="Yes">Yes, I'm comfortable</option>
+            <option value="No">No, but I want to improve</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="time"><i class="fas fa-clock"></i> Preferred session time?</label>
+          <select class="form-input" name="Preferred_Time" id="time" required>
+            <option value="" disabled selected>Select preferred time</option>
+            <option value="Morning">Morning (8-11 AM)</option>
+            <option value="Evening">Evening (6-9 PM)</option>
+            <option value="Anytime">Any time works</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="regular"><i class="fas fa-calendar-check"></i> Can you commit to regular sessions?</label>
+          <select class="form-input" name="Regularity_Commitment" id="regular" required>
+            <option value="" disabled selected>Select your commitment</option>
+            <option value="Yes">Yes, I'll be regular</option>
+            <option value="No">No, my schedule varies</option>
+          </select>
+        </div>
+
+        <!-- Redirect after form submission -->
+        <input type="hidden" name="_next" value="thankyou.html" />
+        <!-- Turn off captcha -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-paper-plane"></i> Join the Group
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Add animation to form elements
+    document.querySelectorAll('.form-input').forEach(element => {
+      element.addEventListener('focus', function() {
+        this.parentNode.querySelector('.form-label').style.color = var(--primary);
+      });
+      
+      element.addEventListener('blur', function() {
+        this.parentNode.querySelector('.form-label').style.color = '';
+      });
+    });
+    
+    // Add character counter for textarea
+    const textarea = document.querySelector('textarea');
+    if (textarea) {
+      const counter = document.createElement('div');
+      counter.style.textAlign = 'right';
+      counter.style.fontSize = '0.8rem';
+      counter.style.color = var(--muted);
+      counter.style.marginTop = '0.5rem';
+      textarea.parentNode.appendChild(counter);
+      
+      textarea.addEventListener('input', function() {
+        counter.textContent = `${this.value.length}/250`;
+      });
+    }
+  </script>
+</body>
+</html>
