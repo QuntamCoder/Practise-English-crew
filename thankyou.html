@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Join Our English Speaking Circle</title>
+  <title>Thank You!</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #5e35b1;
-      --secondary: #3949ab;
-      --accent: #7c4dff;
-      --light: #f5f3ff;
-      --dark: #1a237e;
-      --text: #2d3748;
-      --muted: #718096;
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --accent: #4895ef;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4cc9f0;
+      --warning: #f72585;
     }
     
     * {
@@ -23,346 +23,210 @@
     }
     
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
       margin: 0;
       padding: 20px;
-      color: var(--text);
+      color: var(--dark);
       line-height: 1.6;
     }
     
-    .form-container {
+    .container {
+      perspective: 1000px;
       width: 100%;
       max-width: 500px;
+      text-align: center;
     }
     
-    .form-card {
+    .thank-you-card {
       background: white;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      padding: 3rem 2.5rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform-style: preserve-3d;
+      transition: all 0.5s ease;
       position: relative;
       overflow: hidden;
     }
     
-    .form-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
+    .thank-you-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
     }
     
-    .form-header::after {
+    .thank-you-card::before {
       content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--accent));
-      margin: 1rem auto 0;
-      border-radius: 2px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
     }
     
     h1 {
       color: var(--primary);
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    
-    .form-intro {
-      font-size: 1.05rem;
-      color: var(--muted);
-      margin-bottom: 2rem;
-      line-height: 1.7;
-      text-align: center;
-    }
-    
-    .form-group {
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-size: 2.2rem;
       position: relative;
+      padding-bottom: 15px;
     }
     
-    .form-label {
-      display: block;
-      margin-bottom: 0.6rem;
-      font-weight: 500;
-      color: var(--dark);
-      font-size: 0.95rem;
-      display: flex;
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+    
+    .emoji {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      animation: bounce 1s infinite alternate;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .btn {
+      display: inline-flex;
       align-items: center;
-    }
-    
-    .form-label i {
-      margin-right: 10px;
-      color: var(--primary);
-      font-size: 1rem;
-    }
-    
-    .form-input {
-      width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #e2e8f0;
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background-color: white;
-      color: var(--text);
-    }
-    
-    .form-input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.1);
-    }
-    
-    textarea.form-input {
-      min-height: 120px;
-      resize: vertical;
-    }
-    
-    select.form-input {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      background-size: 1em;
-    }
-    
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
       color: white;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 1.5rem;
+      text-decoration: none;
+      margin-top: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
     
-    .submit-btn:hover {
-      background: linear-gradient(135deg, var(--secondary), var(--primary));
+    .btn:hover {
+      background: linear-gradient(45deg, var(--secondary), var(--primary));
       transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(94, 53, 177, 0.3);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
     
-    .submit-btn:active {
+    .btn:active {
       transform: translateY(0);
     }
     
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 2rem 0;
-      justify-content: center;
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--accent);
+      opacity: 0;
     }
     
-    .feature {
-      background: rgba(124, 77, 255, 0.1);
-      color: var(--primary);
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
     }
     
-    @media (max-width: 576px) {
-      .form-card {
-        padding: 1.5rem;
-      }
-      
-      h1 {
-        font-size: 1.6rem;
-      }
-      
-      .form-intro {
-        font-size: 1rem;
-      }
-    }
-    
-    /* Animation */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
     
-    .form-card {
+    .thank-you-card {
       animation: fadeIn 0.6s ease-out forwards;
     }
     
-    /* Floating label alternative */
-    .floating-label-group {
-      position: relative;
-      margin-top: 1.5rem;
-    }
-    
-    .floating-label {
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      color: var(--muted);
-      transition: all 0.2s ease;
-      pointer-events: none;
-      background: white;
-      padding: 0 5px;
-    }
-    
-    .form-input:focus + .floating-label,
-    .form-input:not(:placeholder-shown) + .floating-label {
-      top: -10px;
-      left: 12px;
-      font-size: 0.8rem;
-      color: var(--primary);
-      background: white;
-    }
-    
-    /* Chat bubble style for some fields */
-    .chat-bubble {
-      background: #f8f9fa;
-      border-radius: 18px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      position: relative;
-    }
-    
-    .chat-bubble::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 30px;
-      border-width: 10px 10px 0;
-      border-style: solid;
-      border-color: #f8f9fa transparent;
+    @media (max-width: 576px) {
+      .thank-you-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .emoji {
+        font-size: 3rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div class="form-container">
-    <div class="form-card">
-      <div class="form-header">
-        <h1>Let's Improve Your English Together Join English Speaking Group</h1>
-    <p class="form-intro">Hi! I'm creating an English-speaking group on Google Meet, starting from 10 July.  
-    There’s no teacher—it’s a peer-learning space with regular speaking activities like  
-    topic discussion, Q&A, role play, storytelling, etc.  
-    If you’re interested in speaking and improving your English, fill out this form.  
-    Let’s help each other grow!</p>
-
-      </div>
-      
-      <div class="features">
-        <div class="feature"><i class="fas fa-users"></i> Peer Learning</div>
-        <div class="feature"><i class="fas fa-comments"></i> Interactive</div>
-        <div class="feature"><i class="fas fa-video"></i> Online Sessions</div>
-      </div>
-      
-      <form action="https://formsubmit.co/amoljadhav8832@gmail.com" method="POST">
-        <div class="form-group">
-          <label class="form-label" for="name"><i class="fas fa-user"></i> What's your name?</label>
-          <input type="text" class="form-input" name="Name" id="name" placeholder="Enter your full name" required />
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="contact"><i class="fas fa-envelope"></i> How can we reach you?</label>
-          <input type="text" class="form-input" name="WhatsApp_or_Email" id="contact" placeholder="WhatsApp number or email" required />
-        </div>
-        
-        <div class="chat-bubble">
-          <p style="margin-bottom: 1rem; color: var(--dark);">To help match you with the right group, tell us about your English level:</p>
-          <div class="form-group">
-            <select class="form-input" name="English_Level" id="level" required>
-              <option value="" disabled selected>Select your level</option>
-              <option value="Beginner">Beginner - Learning basics</option>
-              <option value="Intermediate">Intermediate - Comfortable with conversations</option>
-              <option value="Advanced">Advanced - Fluent but want to refine</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="why"><i class="fas fa-question-circle"></i> Why do you want to join us?</label>
-          <textarea class="form-input" name="Why" id="why" placeholder="Share your motivation..." required></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="comfort"><i class="fas fa-microphone"></i> Comfortable speaking in a group?</label>
-          <select class="form-input" name="Comfort_Speaking" id="comfort" required>
-            <option value="" disabled selected>Select your comfort level</option>
-            <option value="Yes">Yes, I'm comfortable</option>
-            <option value="No">No, but I want to improve</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="time"><i class="fas fa-clock"></i> Preferred session time?</label>
-          <select class="form-input" name="Preferred_Time" id="time" required>
-            <option value="" disabled selected>Select preferred time</option>
-            <option value="Morning">Morning (8-11 AM)</option>
-            <option value="Evening">Evening (6-9 PM)</option>
-            <option value="Anytime">Any time works</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label class="form-label" for="regular"><i class="fas fa-calendar-check"></i> Can you commit to regular sessions?</label>
-          <select class="form-input" name="Regularity_Commitment" id="regular" required>
-            <option value="" disabled selected>Select your commitment</option>
-            <option value="Yes">Yes, I'll be regular</option>
-            <option value="No">No, my schedule varies</option>
-          </select>
-        </div>
-
-        <!-- Redirect after form submission -->
-        <input type="hidden" name="_next" value="thankyou.html" />
-        <!-- Turn off captcha -->
-        <input type="hidden" name="_captcha" value="false" />
-
-        <button type="submit" class="submit-btn">
-          <i class="fas fa-paper-plane"></i> Join the Group
-        </button>
-      </form>
+  <div class="container">
+    <div class="thank-you-card">
+      <div class="emoji">🎉</div>
+      <h1>Thank You!</h1>
+      <p>Your response has been successfully received.<br>We'll contact you soon with all the details about our English speaking group sessions.</p>
+      <p><i class="fas fa-check-circle" style="color: var(--accent);"></i> Check your email/WhatsApp for confirmation</p>
+      <a href="index.html" class="btn">
+        <i class="fas fa-arrow-left"></i> Back to Homepage
+      </a>
     </div>
   </div>
 
   <script>
-    // Add animation to form elements
-    document.querySelectorAll('.form-input').forEach(element => {
-      element.addEventListener('focus', function() {
-        this.parentNode.querySelector('.form-label').style.color = var(--primary);
-      });
+    // Simple confetti effect
+    function createConfetti() {
+      const colors = ['#4361ee', '#4895ef', '#4cc9f0', '#3f37c9'];
+      const card = document.querySelector('.thank-you-card');
       
-      element.addEventListener('blur', function() {
-        this.parentNode.querySelector('.form-label').style.color = '';
-      });
-    });
-    
-    // Add character counter for textarea
-    const textarea = document.querySelector('textarea');
-    if (textarea) {
-      const counter = document.createElement('div');
-      counter.style.textAlign = 'right';
-      counter.style.fontSize = '0.8rem';
-      counter.style.color = var(--muted);
-      counter.style.marginTop = '0.5rem';
-      textarea.parentNode.appendChild(counter);
-      
-      textarea.addEventListener('input', function() {
-        counter.textContent = `${this.value.length}/250`;
-      });
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.top = -10 + 'px';
+        confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+        card.appendChild(confetti);
+        
+        const animationDuration = Math.random() * 3 + 2;
+        
+        confetti.animate([
+          { 
+            opacity: 1,
+            top: -10 + 'px',
+            transform: 'rotate(0deg) scale(1)'
+          },
+          { 
+            opacity: 1,
+            top: 100 + '%',
+            transform: 'rotate(' + Math.random() * 360 + 'deg) scale(0.5)'
+          }
+        ], {
+          duration: animationDuration * 1000,
+          easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+          delay: Math.random() * 2000
+        });
+        
+        setTimeout(() => {
+          confetti.remove();
+        }, animationDuration * 1000);
+      }
     }
+    
+    // Trigger confetti when page loads
+    window.addEventListener('load', createConfetti);
+    
+    // Also trigger confetti when button is hovered
+    document.querySelector('.btn').addEventListener('mouseenter', createConfetti);
   </script>
 </body>
 </html>
